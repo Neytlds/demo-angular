@@ -4,9 +4,10 @@ import { FormsModule } from "@angular/forms"; // 从 @angular/forms 库中导入
 
 import { AppComponent } from "./app.component";
 import { HeroesComponent } from "./heroes/heroes.component";
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, HeroesComponent],
+  declarations: [AppComponent, HeroesComponent, HeroDetailComponent],
   imports: [BrowserModule, FormsModule], // 把 FormsModule 添加到 @NgModule 元数据的 imports 数组中，这里是该应用所需外部模块的列表
   providers: [],
   bootstrap: [AppComponent]

@@ -9,14 +9,20 @@ import { HEROES } from "../mock-heroes";
   styleUrls: ["./heroes.component.css"] // 组件私有 CSS 样式表文件的位置
 })
 export class HeroesComponent implements OnInit {
-  hero: Hero = {
-    id: 1,
-    name: "Windstrom"
-  };
+  // selectHero: Hero = {
+  //   id: 1,
+  //   name: "Windstrom"
+  // };
+
+  selectHero: Hero;
 
   heroes = HEROES;
 
   constructor() {}
 
   ngOnInit() {} // 是一个生命周期钩子，Angular 在创建完组件后很快就会调用 ngOnInit。这里是放置初始化逻辑的好地方
+
+  onSelect(hero) {
+    this.selectHero=hero;
+  }
 }

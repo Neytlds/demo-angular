@@ -1,14 +1,16 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
-  <li *ngFor="let hero of heroes">
+  <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectHero">
     <span class="badge">{{ hero.id }}</span>{{ hero.name }}
   </li>
 </ul>
 
-<h2>{{ hero.name | uppercase }} Details</h2>
-<!-- 竖线右边的是Angular的内置管道，用于格式化字符串，uppercase用于将字符串大写 -->
-<div><span>id:</span>{{ hero.id }}</div>
-<div>
-  <label>name:<input [(ngModel)]="hero.name" placeholder="name"/><!-- [(ngModel]：双向绑定 -->
-  </label>
+<div *ngIf="selectHero">
+  <h2>{{ selectHero.name | uppercase }} Details</h2>
+  <!-- 竖线右边的是Angular的内置管道，用于格式化字符串，uppercase用于将字符串大写 -->
+  <div><span>id:</span>{{ selectHero.id }}</div>
+  <div>
+    <label>name:<input [(ngModel)]="selectHero.name" placeholder="name"/><!-- [(ngModel]：双向绑定 -->
+    </label>
+  </div>
 </div>

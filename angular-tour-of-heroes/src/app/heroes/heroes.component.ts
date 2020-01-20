@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core"; // 从 Angular 核心库中导入 Component 符号，并为组件类加上 @Component 装饰器
 import { Hero } from "../hero"; // 导入 Hero 类
-import { HEROES } from "../mock-heroes";
+import { HeroService } from "../hero.service"; // 导入 HeroService 服务
 
 @Component({
   // 装饰器函数，用于为该组件指定 Angular 所需的元数据
@@ -16,13 +16,19 @@ export class HeroesComponent implements OnInit {
 
   selectHero: Hero;
 
-  heroes = HEROES;
+  heroes: Hero[];
 
-  constructor() {}
+  constructor(private heroService: HeroService) {} // 注入HeroService 服务
 
-  ngOnInit() {} // 是一个生命周期钩子，Angular 在创建完组件后很快就会调用 ngOnInit。这里是放置初始化逻辑的好地方
+  ngOnInit() { // 是一个生命周期钩子，Angular 在创建完组件后很快就会调用 ngOnInit。这里是放置初始化逻辑的好地方
+    this.getHeroes();
+  }
 
-  onSelect(hero) {
-    this.selectHero=hero;
+  onSelect(hero: Hero) {
+    this.selectHero = hero;
+  }
+
+  getHeroes(): void {
+    this.heroes = this.heroService.getHeroes();
   }
 }

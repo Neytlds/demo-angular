@@ -20,7 +20,8 @@ export class HeroesComponent implements OnInit {
 
   constructor(private heroService: HeroService) {} // 注入HeroService 服务
 
-  ngOnInit() { // 是一个生命周期钩子，Angular 在创建完组件后很快就会调用 ngOnInit。这里是放置初始化逻辑的好地方
+  // 是一个生命周期钩子，Angular 在创建完组件后很快就会调用 ngOnInit。这里是放置初始化逻辑的好地方
+  ngOnInit() {
     this.getHeroes();
   }
 
@@ -29,6 +30,6 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
+    this.heroService.getHeroes().subscribe(heroes => (this.heroes = heroes));
   }
 }
